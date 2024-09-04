@@ -38,9 +38,24 @@ def order_points(pts):
 
 
 #text extraction 
-
-
+def text_extraction(warped):
     
+    # Extract text using OCR
+    config = r'--oem 3 -l eng --psm 6'
+    text = pytesseract.image_to_string(warped, config=config)
+    print("Extracted Text:", text)
+
+    # Clean and extract data from text
+    extracted_data = clean_and_extract_data(text)
+
+    output_csv="extracted_data.csv"
+
+    # Write extracted data to CSV
+    if extracted_data:
+        write_to_csv(extracted_data, output_csv)
+        print(f"Data written to {output_csv}")
+    else:
+        print("No data extracted.")
     
     
     
