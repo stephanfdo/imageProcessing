@@ -1,3 +1,8 @@
+# infovis.py
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 def load_and_visualize(csv_file_path):
     # Step 1: Load the CSV file with a specified encoding
     try:
