@@ -11,4 +11,13 @@ def main(image_path):
     gray = cv2.GaussianBlur(gray, (5, 5), 0)
     edged = cv2.Canny(gray, 75, 200)
 
+    print("STEP 1: Edge Detection")
+    show_image("Original Image", image)
+    show_image("Edged Image", edged)
+    cv2.imwrite(os.path.join("outputImages", "gray_image.png"), gray)
+    cv2.imwrite(os.path.join("outputImages", "edged_image.png"), edged)
+    
+
+
+
   
