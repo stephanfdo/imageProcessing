@@ -1,3 +1,6 @@
+import cv2
+import numpy as np
+
 def show_image(title, image):
     """Helper function to display images using OpenCV."""
     cv2.imshow(title, image)
@@ -41,3 +44,13 @@ def manual_transformation(image):
     else:
         print("You need to select exactly four points!")
         return None
+
+def sharpen_and_close(image):
+    """Apply sharpening and morphological operations to enhance text."""
+    blurred = cv2.GaussianBlur(image, (3, 3), 0)
+    kernel_sharpening = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
+    sharpened = cv2.filter2D(blurred, -1, kernel_sharpening)
+    kernel = np.ones((3, 3), np.uint8)
+    eroded = cv2.erode(sharpened, kernel, iterations=1)
+    closed = cv2.dilate(eroded, kernel, iterations=1)
+    return closed
