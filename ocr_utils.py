@@ -84,6 +84,7 @@ def clean_and_extract_data(text):
             })
     return extracted_data
 
+#write the file to csv
 def write_to_csv(extracted_data, output_csv):
     """
     Writes the extracted data to a CSV file.
